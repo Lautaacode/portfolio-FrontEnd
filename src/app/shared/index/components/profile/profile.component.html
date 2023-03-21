@@ -1,0 +1,8 @@
+<div class="profile-section" *ngFor="let img of data" >
+    <div class="profile">
+        <img [src]="img.profileImg" id="profile-img" alt="">
+        <button type="button" class="btn btn-edition btn-edit btn-profile" data-bs-toggle="modal" data-bs-target="#profileModal">
+            <i class="fa-solid fa-pencil"></i>
+        </button>
+    </div>
+</div>

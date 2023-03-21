@@ -1,0 +1,7 @@
+.error{
+    color: red;
+}
+textarea {
+    resize: none;
+    overflow: hidden;
+}

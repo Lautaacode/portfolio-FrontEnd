@@ -1,0 +1,35 @@
+<div class="skill-box">
+    <div class="row-1">
+        <div class="column-1">
+            <div class="skill">
+                <div *ngFor="let skill of data" class="progressbar-container p-0">
+                    <div class="d-flex flex-row progress-container">
+                        <div class="d-flex circular-progress" style="--clr: #2f2f2f; --num:{{skill.percent}};">
+                            <div class="dot"></div>
+                            <svg>
+                                <circle cx="70" cy="70" r="70"></circle>
+                                <circle cx="70" cy="70" r="70"></circle>
+                            </svg>
+                            <div class="number">
+                                <i class="fa-brands {{skill.skillIco}} "></i>
+                                <h2>{{skill.percent}}<span>%</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column align-self-start">
+                        <button type="button" class="btn btn-edition" data-bs-toggle="modal"
+                            data-bs-target="#addSkillModal">
+                            <i class="fa-solid fa-pencil"></i>
+                        </button>
+                        <button type="button" class="btn btn-edition" data-bs-toggle="modal"
+                            data-bs-target="#deleteSkillModal">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="modal fade" id="skillModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Borrar Trabajo:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    
+                    <label for="skillInput" class="form-label">Logo de tecnologia:</label>
+                    <input type="text" class="form-control" id="skillInput">
+                    <div *ngIf="SkillIco?.errors  && SkillIco?.touched">
+                        <p *ngIf="SkillIco?.hasError('required')" class="error">
+                            La tecnologia es requerida.
+                        </p>
+                    </div>
+
+                    <label for="skillInput" class="form-label">porcentaje:</label>
+                    <input type="number" class="form-control" id="skillInput">
+                    <div *ngIf="Percent?.errors  && Percent?.touched">
+                        <p *ngIf="Percent?.hasError('required')" class="error">
+                            El porcentaje es requerido.
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+.navbar{
+    padding: 0.7rem;
+}
+.navbar-toggler{
+ padding: 3px;
+}
+
+@media screen and (min-width: 768px) {
+    .navbar{
+    padding: 0 0.7rem;
+    }
+    .navbar-collapse{
+        display: flex;
+        justify-content: right;
+    }
+}

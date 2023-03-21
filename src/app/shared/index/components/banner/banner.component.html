@@ -1,0 +1,8 @@
+<div class="banner" *ngFor="let img of data" >
+    <img [src]="img.bannerImg" id="img-banner">
+    <div class="btn-edit">
+        <button type="button" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#bannerModal">
+            <i class="fa-solid fa-pencil"></i>
+        </button>
+    </div>
+</div>

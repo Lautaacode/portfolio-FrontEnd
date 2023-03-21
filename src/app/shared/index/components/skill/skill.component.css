@@ -1,0 +1,169 @@
+.skill-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+}    
+.skill{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.column-1{
+    display: flex;
+    flex-direction:column;
+    margin: 0;
+    width: 100%;
+}
+.row-1{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+@media screen and (min-width:768px) {
+    .skill-box{
+        padding:0 0 1rem 1rem;
+        border-radius: 8px;
+        box-shadow: 1px 1px 3px black;
+    }
+    .skill-box:hover{
+        transition-duration: .6s;    
+        box-shadow: 3px 3px .3em;
+    }
+    
+    .skill{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+.progressbar-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5em;
+}
+
+@media (min-width: 768px) {
+    .progressbar-container {
+        gap: 1rem;
+    }
+}
+.progress-container {
+    justify-content: center;
+    align-items: center;
+    max-width: 160px;
+    max-height: 160px;
+    background: #fff;
+    border-radius: 2%;
+}
+
+.progress-container .circular-progress {
+    position: relative;
+    height: 150px;
+    width: 150px;
+}
+
+.progress-container .circular-progress svg {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    transform: rotate(270deg);
+}
+
+.progress-container .circular-progress svg circle {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    fill: transparent;
+    stroke-width: 2;
+    stroke: #1919192f;
+    transform: translate(5px, 5px);
+}
+
+.progress-container .circular-progress svg circle:nth-child(2) {
+    stroke: var(--clr);
+    stroke-dasharray: 440;
+    stroke-dashoffset: calc(440 - (440 * var(--num)) / 100);
+    opacity: 0;
+    animation: fadeIn 1s linear forwards;
+    animation-delay: 2s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.dot {
+    position: absolute;
+    inset: 5px;
+    z-index: 10;
+    animation: animateDot 2s linear forwards;
+}
+
+@keyframes animateDot {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(calc(3.6deg * var(--num)));
+    }
+}
+
+.dot::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--clr);
+    box-shadow: 0 0 10px var(--clr),
+        0 0 30px var(--clr);
+}
+
+.number {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+    opacity: 0;
+    animation: fadeIn 1s linear forwards;
+    animation-delay: 2s;
+}
+
+.number h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2f2f2f;
+    font-weight: 700;
+    font-size: 2em;
+}
+
+.number h2 span {
+    font-weight: 300;
+    font-size: 0.5em;
+}
+
+.number i {
+    font-weight: 300;
+    font-size: 3.5em;
+    color: #2f2f2f;
+}

@@ -1,0 +1,92 @@
+.main-background {
+    background: #ffffff;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .main-background {
+        background: none;
+    }
+
+    .login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        backdrop-filter: blur(7px);
+        border-radius: 8px;
+    }
+}
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    background: #FFFFFF;
+    min-height: 768px;
+    width: 100%;
+    height: 100vh;
+}
+@media (min-width: 768px) {
+    .login-container {
+        border-radius: 2%;
+        margin: auto;
+        max-height: 80vh;
+        max-width: 40em;
+    
+    }
+}
+.img-login{
+    max-width: 40%;
+    margin: 8em 0 5em 0;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1rem black;
+}
+@media (min-width: 768px) {
+    .img-login{
+        margin: 5em 0 9em 0;
+        max-width: 40%;
+    }
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    width: 100%;
+    margin: 6em 0 0 0;
+}
+@media (min-width: 768px) {
+    .form-container{
+        margin: 0;
+    }
+}
+.form-box{
+    font-family: sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 60%;
+    border: 0;
+    border-right: #cfcfcf .5px solid;
+    border-bottom:#cfcfcf .5px solid;
+    border-radius: 2%;
+    margin: 0 auto 1em;
+    padding: 1em;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.form-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    margin: 1em 20% 1em;
+
+}

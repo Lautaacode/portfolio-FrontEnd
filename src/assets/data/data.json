@@ -1,0 +1,80 @@
+{
+  "user": {
+    "name": "Lautaro",
+    "lastName": "Blanco",
+    "title": "Desarrollador Fullstack Jr.",
+    "aboutMeDescription": "Hola me llamo Lautaro Blanco, soy desarrollador Fullstack Jr. y estudiante de Ingeniería en Sistemas de la Universidad Tecnológica de Buenos Aires.",
+    "banner": "./assets/images/banner.png",
+    "profileImg": "./assets/images/foto_de_perfil.jpg",
+    "actualJob": "./assets/images/utn.jpg",
+    "actualStudy": "./assets/images/utn.jpg"
+  },
+  "activity": [
+    {
+      "id": "Experencia"
+    },
+    {
+      "id": "Estudios"
+    },
+    {
+      "id": "Habilidades"
+    },
+    {
+      "id": "Proyectos"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Impresor fotografico",
+      "img": "./assets/images/fotoeuropa.jpg",
+      "dateInit": "2018",
+      "dateEnd": "2019",
+      "experienceTitle": "FOTOEUROPA",
+      "experienceDescription": "Impresor fotografico: edicion de fotos, colorimetria, armado de cuadros, etc."
+    }
+  ],
+  "education": [
+    {
+      "title": "Secundario",
+      "img": "./assets/images/cens.png",
+      "dateInit": "2015",
+      "dateEnd": "2018",
+      "educationTitle": "Centro Educativo Nivel Secundario nº 451",
+      "educationDescription": "Secundario completo con titulo en: Bachiller con orientación en gestion y administració en práctica laboral y administrativa."
+    },
+    {
+      "title": "Ing. en Sistemas",
+      "img": "./assets/images/utn_logo.jpg",
+      "dateInit": "2021",
+      "dateEnd": "actualidad",
+      "educationTitle": "Universidad Tecnologica Nacional",
+      "educationDescription": "Cursando 1er año de ingenieria en sistemas de información, en la UTN FRBA."
+    }
+  ],
+  "skill": [
+    {
+      "name": "fa-html5",
+      "percent": "90"
+    },
+    {
+      "name": "fa-css3-alt",
+      "percent": "80"
+    },
+    {
+      "name": "fa-bootstrap",
+      "percent": "80"
+    },
+    {
+      "name": "fa-js",
+      "percent": "80"
+    },
+    {
+      "name": "fa-angular",
+      "percent": "80"
+    },
+    {
+      "name": "fa-java",
+      "percent": "20"
+    }
+  ]
+}

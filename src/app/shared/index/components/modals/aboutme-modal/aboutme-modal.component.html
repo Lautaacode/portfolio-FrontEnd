@@ -1,0 +1,72 @@
+<div class="modal fade" id="aboutmeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form [formGroup]="aboutmeForm" (ngSubmit)="onSubmit($event)">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Acerca de mi:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="clear()"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="nameinput" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="nameinput" formControlName="name">
+                    <div *ngIf="Name?.errors  && Name?.touched">
+                        <p *ngIf="Name?.hasError('required')" class="error">
+                            El titulo es requerido.
+                        </p>
+                    </div>
+
+                    <label for="lastnameInput" class="form-label">Apellido:</label>
+                    <input type="text" class="form-control" id="lastnameInput" formControlName="lastname">
+                    <div *ngIf="Lastname?.errors  && Lastname?.touched">
+                        <p *ngIf="Lastname?.hasError('required')" class="error">
+                            El titulo es requerido.
+                        </p>
+                    </div>
+
+                    <label for="tittleInput" class="form-label">Titulo:</label>
+                    <input type="text" class="form-control" id="tittleInput" formControlName="title">
+                    <div *ngIf="Title?.errors  && Title?.touched">
+                        <p *ngIf="Title?.hasError('required')" class="error">
+                            El titulo es requerido.
+                        </p>
+                    </div>
+
+                    <label for="aboutmeInput" class="form-label">Acerca de mi:</label>
+                    <textarea name="" class="form-control" id="aboutmeInput" formControlName="aboutMe"></textarea>
+                    <div *ngIf="AboutMe?.errors  && AboutMe?.touched">
+                        <p *ngIf="AboutMe?.hasError('required')" class="error">
+                            El titulo es requerido.
+                        </p>
+                    </div>
+
+                    <label for="imageEduationInput" class="form-label">imagen actual de estudios:</label>
+                    <input type="url" class="form-control" id="imageEducationInput" formControlName="studyImg">
+                    <div *ngIf="StudyImg?.errors  && StudyImg?.touched">
+                        <p *ngIf="StudyImg?.hasError('required')" class="error">
+                            La url es requerida.
+                        </p>
+                        <p *ngIf="StudyImg?.hasError('pattern')" class="error">
+                            El formato de la url debe ser valida.
+                        </p>
+                    </div>
+
+                    <label for="imageExperienceInput" class="form-label">imagen actual de trabajo:</label>
+                    <input type="url" class="form-control" id="imageExperienceInput" formControlName="jobImg">
+                    <div *ngIf="JobImg?.errors  && JobImg?.touched">
+                        <p *ngIf="JobImg?.hasError('required')" class="error">
+                            La url es requerida.
+                        </p>
+                        <p *ngIf="JobImg?.hasError('pattern')" class="error">
+                            El formato de la url debe ser valida.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="clear()">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
