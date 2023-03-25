@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,14 +12,24 @@ import { UserService } from 'src/app/services/user.service';
 export class AboutmeComponent implements OnInit {
   data: User [] = [];
 
-  constructor(private suser: UserService) { }
+  users: User[] | undefined;
   
+  constructor(private sUser: UserService, private router:Router) { }
 
   showUser(): void {
-    this.suser.list().subscribe(dato => { this.data = dato });
+    this.sUser.getUsers().subscribe(dato => { this.data = dato });
   }
   ngOnInit(): void {
-    this.showUser();
+    this.getUsers();
+  }
+
+  getUsers(): void {
+    this.sUser.getUsers().subscribe(dato => { this.users = dato });
+  }
+
+
+  updateAboutme(id: number) {
+    this.router.navigate(['user/update/aboutme', id]);
   }
 }
 

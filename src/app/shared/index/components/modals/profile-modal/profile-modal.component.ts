@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-profile-modal',
@@ -8,17 +11,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfileModalComponent {
 
-  profileForm: any = FormGroup;
+  user?: User;
+  data: any;
 
-  // Inyectar en el constructor el formBuilder
-  constructor(private formBuilder: FormBuilder) {
-    ///Creamos el grupo de controles para el formulario de login
-    this.profileForm = this.formBuilder.group({
-      profileImg: ['', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
+
+  constructor(private sUser: UserService, private route: ActivatedRoute, private router: Router ) { }
+
+  ngOnInit() {
+    let id = this.route.snapshot.params['id'];
+    this.sUser.getUser(id).subscribe(data => {
+      this.user = data
     })
   }
-
-  ngOnInit() { }
+  profileForm = new FormGroup({
+    profileImg: new FormControl('', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
+  })
 
   get ProfileImg() {
     return this.profileForm.get('profileImg');
@@ -27,14 +34,30 @@ export class ProfileModalComponent {
     this.profileForm.reset();
   }
 
+
+  updateUserImg(): void {
+    this.data = this.profileForm.value
+    console.log(this.data)
+
+    this.sUser.updateUser(this.user?.id, this.data).subscribe(data => {
+      console.log(data)
+    })
+
+    this.router.navigate(['/']);
+  }
+
   onSubmit(event: Event) {
     event.preventDefault;
 
     if (this.profileForm.valid) {
-      alert("Todo salio bien ¡Enviar formuario!")
+      this.updateUserImg();
+      window.location.reload();
+      alert("Imagen de perfil modificada.");
     } else {
       this.profileForm.markAllAsTouched();
     }
   }
-
+  index() {
+    this.router.navigate(['index']);
+  }
 }

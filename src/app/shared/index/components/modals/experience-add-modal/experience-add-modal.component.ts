@@ -61,11 +61,13 @@ export class ExperienceAddModalComponent {
     if (this.experienceAddForm.valid) {
       this.createExperience()
       window.location.reload();
-
     } else {
       alert("fallo la carga de datos, intente nuevamente");
       this.experienceAddForm.markAllAsTouched();
       
     }
+  }
+  index(){
+    this.router.navigate(['index']);
   }
 }

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-aboutme-modal',
@@ -7,22 +10,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./aboutme-modal.component.css']
 })
 export class AboutmeModalComponent {
-  aboutmeForm: any = FormGroup;
+  user?: User;
+  data: any;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private sUser: UserService, private route: ActivatedRoute, private router: Router) { }
 
-    this.aboutmeForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      lastname: ['',[Validators.required]],
-      title: ['',[Validators.required]],
-      aboutMe: ['', [Validators.required]],
-      jobImg: ['', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
-      studyImg: ['', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]]
+  ngOnInit() {
+    let id = this.route.snapshot.params['id'];
+    this.sUser.getUser(id).subscribe(data => {
+      this.user = data
     })
   }
 
-  ngOnInit() { }
-
+  aboutmeForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    lastname: new FormControl('', [Validators.required]),
+    title: new FormControl('', [Validators.required]),
+    aboutMe: new FormControl('', [Validators.required]),
+    jobImg: new FormControl('', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
+    studyImg: new FormControl('', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')])
+  })
   get Name() {
     return this.aboutmeForm.get('name');
   }
@@ -44,15 +51,27 @@ export class AboutmeModalComponent {
   clear(): void {
     this.aboutmeForm.reset();
   }
+  updateAboutme(): void {
+    this.data = this.aboutmeForm.value
+    console.log(this.data)
 
+    this.sUser.updateUser(this.user?.id, this.data).subscribe(data => {
+      console.log(data)
+    })
+
+    this.router.navigate(['/']);
+  }
   onSubmit(event: Event) {
     event.preventDefault;
 
     if (this.aboutmeForm.valid) {
-      alert("Todo salio bien ¡Enviar formuario!")
+      this.updateAboutme();
+      window.location.reload();
+      alert("Acerca de mi modificada.");
     } else {
       this.aboutmeForm.markAllAsTouched();
     }
   }
+
 
 }

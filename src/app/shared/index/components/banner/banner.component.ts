@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
-import { PortfolioService } from 'src/app/services/portfolio.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -8,16 +8,20 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.css']
 })
-export class BannerComponent {
-  data: User[] = [];
+export class BannerComponent implements OnInit {
 
-  constructor(private suser:UserService) { }
+  users: User[] | undefined;
 
+  constructor(private sUser:UserService, private router:Router) { }
   
-  showUser(): void {
-    this.suser.list().subscribe(dato => { this.data = dato });
+  
+  getUsers(): void {
+    this.sUser.getUsers().subscribe(dato => { this.users = dato });
   }
   ngOnInit() {
-    this.showUser()
+    this.getUsers()
+  }
+  updateBannerImg(id: number){
+    this.router.navigate(['user/update/bannerImg', id]);
   }
 }

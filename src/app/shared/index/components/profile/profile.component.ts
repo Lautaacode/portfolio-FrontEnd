@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
-import { PortfolioService } from 'src/app/services/portfolio.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,16 +10,20 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfileComponent {
 
-  data: User[] = [];
+  users: User[]| undefined;
 
-  constructor(private suser: UserService) { }
+  constructor(private sUser: UserService, private router:Router) { }
 
   ngOnInit() {
     this.showUser()
 
   }
   showUser() {
-    this.suser.list().subscribe(dato => { this.data = dato });
+    this.sUser.getUsers().subscribe(dato => { this.users = dato });
   }
-}
 
+  updateProfileImg(id: number){
+    this.router.navigate(['user/update/profileImg', id]);
+  }
+  
+}

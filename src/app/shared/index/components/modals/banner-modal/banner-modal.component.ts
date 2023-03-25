@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-banner-modal',
@@ -7,18 +10,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./banner-modal.component.css']
 })
 export class BannerModalComponent {
-  bannerForm: any = FormGroup;
+  
+  user?: User;
+  data: any;
 
-  // Inyectar en el constructor el formBuilder
-  constructor(private formBuilder: FormBuilder) {
-    ///Creamos el grupo de controles para el formulario de login
-    this.bannerForm = this.formBuilder.group({
-      bannerImg: ['', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]]
+  constructor(private sUser: UserService, private route: ActivatedRoute, private router: Router) { }
+
+  ngOnInit() {
+    let id = this.route.snapshot.params['id'];
+    this.sUser.getUser(id).subscribe(data => {
+      this.user = data
     })
   }
-
-  ngOnInit() { }
-
+  bannerForm = new FormGroup({
+    bannerImg: new FormControl('', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
+  });
   get BannerImg() {
     return this.bannerForm.get('bannerImg');
   }
@@ -26,14 +32,31 @@ export class BannerModalComponent {
     this.bannerForm.reset();
   }
 
+  updateBannerImg(): void {
+    this.data = this.bannerForm.value
+    console.log(this.data)
+
+    this.sUser.updateUser(this.user?.id, this.data).subscribe(data => {
+      console.log(data)
+    })
+
+    this.router.navigate(['/']);
+  }
+
   onSubmit(event: Event) {
     event.preventDefault;
 
     if (this.bannerForm.valid) {
-      alert("Todo salio bien ¡Enviar formuario!")
+      this.updateBannerImg();
+      window.location.reload();
+      alert("Imagen de banner modificada.");
     } else {
       this.bannerForm.markAllAsTouched();
     }
+  }
+
+  index() {
+    this.router.navigate(['index']);
   }
 
 }

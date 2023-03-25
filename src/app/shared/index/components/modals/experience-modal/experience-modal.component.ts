@@ -14,13 +14,6 @@ export class ExperienceModalComponent {
   experience?: Experience;
   data: any;
 
-  titleExp: string = '';
-  imgExp: string = '';
-  dateInitExp: string = '';
-  dateEndExp: string = '';
-  institutionExp: string = '';
-  descriptionExp: string = '';
-
   constructor(private sExperience: ExperienceService, private route: ActivatedRoute, private router: Router) {
   }
 
@@ -28,7 +21,7 @@ export class ExperienceModalComponent {
     let id = this.route.snapshot.params['id'];
     this.sExperience.getExperience(id).subscribe(data => {
       this.experience = data
-      console.log(this.experience)
+
     })
   }
   experienceForm = new FormGroup({
@@ -72,12 +65,6 @@ export class ExperienceModalComponent {
     })
 
     this.router.navigate(['/']);
-    
-    // this.sExperience.updateExperience().subscribe(data => {
-    //   alert("Experiencia modificada.");
-    //   this.router.navigate(['']);
-    // }
-    // )
   }
 
   onSubmit(event: Event) {
@@ -90,5 +77,8 @@ export class ExperienceModalComponent {
     } else {
       this.experienceForm.markAllAsTouched();
     }
+  }
+  index(){
+    this.router.navigate(['index']);
   }
 }
