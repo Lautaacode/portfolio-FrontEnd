@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Experience } from 'src/app/model/experience';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ExperienceService } from 'src/app/services/experience.service';
 
 @Component({
@@ -10,26 +10,17 @@ import { ExperienceService } from 'src/app/services/experience.service';
 })
 export class ExperienceAddModalComponent {
 
-  experienceAddForm: any = FormGroup;
-  titleExp:string = '';
-  imgExp:string = '';
-  dateInitExp:string = '';
-  dateEndExp:string ='';
-  institutionExp:string = '';
-  descriptionExp:string = '';
+  constructor(private sExperience: ExperienceService, private router: Router){}
 
-  constructor(private formBuilder: FormBuilder, private sExperience: ExperienceService){
+  data: any
 
-    this.experienceAddForm = this.formBuilder.group({
-      titleExp: ['', Validators.required],
-      imgExp: ['', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
-      dateInitExp: ['',[Validators.required]],
-      dateEndExp: ['',[Validators.required]],
-      institutionExp: ['', [Validators.required]],
-      descriptionExp: ['', [Validators.required]]
-    })
-  }
-
+  experienceAddForm = new FormGroup({
+        titleExp: new FormControl('', [Validators.required]),
+        imgExp: new FormControl('', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),      dateInitExp: new FormControl('', [Validators.required]),
+        dateEndExp: new FormControl('', [Validators.required]),
+        institutionExp: new FormControl('', [Validators.required]),
+        descriptionExp: new FormControl('', [Validators.required]),
+      })
   ngOnInit() {
     }
 
@@ -57,22 +48,20 @@ export class ExperienceAddModalComponent {
   }
 
   createExperience(): void {
-    const experience = new Experience(this.titleExp, this.imgExp,this.dateInitExp, this.dateEndExp, this.institutionExp, this.descriptionExp);
-    this.sExperience.newExperience(experience).subscribe(() => {
-    },
-      () => {
-        window.location.reload()
-        alert("Experiencia Añadida");
-        
-        
-       })
+    this.data = this.experienceAddForm.value;
+    console.log(this.data)
 
+    this.sExperience.createExperience(this.data).subscribe(data => {
+    })
+    this.router.navigate(['/']);
   }
   onSubmit(event: Event) {
     event.preventDefault;
 
     if (this.experienceAddForm.valid) {
       this.createExperience()
+      window.location.reload();
+
     } else {
       alert("fallo la carga de datos, intente nuevamente");
       this.experienceAddForm.markAllAsTouched();

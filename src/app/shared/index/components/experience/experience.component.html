@@ -1,4 +1,4 @@
-<div *ngFor=" let experience of data" class="activity-box">
+<div *ngFor=" let experience of experiences" class="activity-box">
     <div class=" activity  ">
         <div class="activity-info">
             <div class="d-flex text-center">
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="d-flex flex-column ">
-        <button type="button" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#addJobModal" >
+        <button type="button" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#addJobModal" (click)="updateExperience(experience.id)" >
             <i class="fa-solid fa-pencil  text-center "></i>
         </button>
         <button type="button" class="btn btn-edition" (click)="deleteExperience(experience.id)">

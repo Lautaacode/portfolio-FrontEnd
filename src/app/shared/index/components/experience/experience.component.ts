@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Experience } from 'src/app/model/experience';
 import { ExperienceService } from 'src/app/services/experience.service';
 import { ExperienceModalComponent } from '../modals/experience-modal/experience-modal.component';
@@ -7,32 +8,35 @@ import { ExperienceModalComponent } from '../modals/experience-modal/experience-
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.css']
 })
-export class ExperienceComponent implements OnInit{
+export class ExperienceComponent implements OnInit {
 
 
-  data: Experience[] = [];
+  experiences: Experience[] | undefined;
 
-  constructor(private sExperience: ExperienceService) {
+  constructor(private sExperience: ExperienceService, private router: Router) {
 
   }
 
   ngOnInit(): void {
-    this.showExperiences();
+    this.getExperiences();
   }
 
-  showExperiences() {
-    this.sExperience.list().subscribe(dato => this.data = dato)
+  getExperiences() {
+    this.sExperience.getExperiences().subscribe(dato => {
+      this.experiences = dato
+    })
   }
-
-  deleteExperience(id: number) {
-    if (id != undefined) {
-      this.sExperience.deleteExperience(id).subscribe(
-        () => {
-          this.showExperiences();
-        }, () => {
-          alert("su experiencia fue eliminada correctamente")
-          this.showExperiences();
-        })
-    }
+  updateExperience(id: number) {
+    this.router.navigate(['experience/update', id]);
+  }
+  deleteExperience(id: number){
+    this.sExperience.deleteExperience(id).subscribe(data => {
+      this.experiences = this.experiences?.filter(experience => experience.id !== id);
+    })
+    
+      setTimeout(()=>{
+        window.location.reload();
+      },0);
+  
   }
 }

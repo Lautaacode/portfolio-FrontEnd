@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Experience } from 'src/app/model/experience';
 import { ExperienceService } from 'src/app/services/experience.service';
@@ -9,33 +9,36 @@ import { ExperienceService } from 'src/app/services/experience.service';
   templateUrl: './experience-modal.component.html',
   styleUrls: ['./experience-modal.component.css']
 })
-export class ExperienceModalComponent{
+export class ExperienceModalComponent {
 
-  experienceForm: any = FormGroup;
-  experience:any = Experience;
+  experience?: Experience;
+  data: any;
 
-  constructor(private formBuilder: FormBuilder, private sExperience: ExperienceService, private activatedRoute: ActivatedRoute, private router: Router) {
+  titleExp: string = '';
+  imgExp: string = '';
+  dateInitExp: string = '';
+  dateEndExp: string = '';
+  institutionExp: string = '';
+  descriptionExp: string = '';
 
-    this.experienceForm = this.formBuilder.group({
-      titleExp: ['', Validators.required],
-      imgExp: ['', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
-      dateInitExp: ['',[Validators.required]],
-      dateEndExp: ['',[Validators.required]],
-      institutionExp: ['', [Validators.required]],
-      descriptionExp: ['', [Validators.required]]
-    })
+  constructor(private sExperience: ExperienceService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.params['id'];
-  this.sExperience.showExperience(id).subscribe( data => {
-    this.experience = data;
-    console.log(data) 
-  },() =>{
-    alert("Error al cargar datos");
-    this.router.navigate(['']);
+    let id = this.route.snapshot.params['id'];
+    this.sExperience.getExperience(id).subscribe(data => {
+      this.experience = data
+      console.log(this.experience)
+    })
   }
-  )}
+  experienceForm = new FormGroup({
+    titleExp: new FormControl('', [Validators.required]),
+    imgExp: new FormControl('', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
+    dateInitExp: new FormControl('', [Validators.required]),
+    dateEndExp: new FormControl('', [Validators.required]),
+    institutionExp: new FormControl('', [Validators.required]),
+    descriptionExp: new FormControl('', [Validators.required])
+  })
 
   get TitleExp() {
     return this.experienceForm.get('titleExp');
@@ -55,18 +58,26 @@ export class ExperienceModalComponent{
   get DescriptionExp() {
     return this.experienceForm.get('descriptionExp');
   }
-  
+
   clear(): void {
     this.experienceForm.reset();
   }
 
-  updateExperience():void{
-    this.sExperience.updateExperience(this.experienceForm.value).subscribe(data => {
-      alert("Experiencia modificada.");
-      console.log(this.experienceForm.value);
-      this.router.navigate(['']);
-    }
-    )
+  updateExperience(): void {
+    this.data = this.experienceForm.value
+    console.log(this.data)
+    
+    this.sExperience.updateExperience(this.experience?.id, this.data).subscribe(data => {
+      console.log(data)
+    })
+
+    this.router.navigate(['/']);
+    
+    // this.sExperience.updateExperience().subscribe(data => {
+    //   alert("Experiencia modificada.");
+    //   this.router.navigate(['']);
+    // }
+    // )
   }
 
   onSubmit(event: Event) {
@@ -74,6 +85,8 @@ export class ExperienceModalComponent{
 
     if (this.experienceForm.valid) {
       this.updateExperience();
+      window.location.reload();
+      alert("Experiencia modificada.");
     } else {
       this.experienceForm.markAllAsTouched();
     }

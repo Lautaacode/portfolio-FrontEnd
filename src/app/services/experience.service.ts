@@ -7,22 +7,23 @@ import { Experience } from '../model/experience';
   providedIn: 'root'
 })
 export class ExperienceService {
-  url = "http://localhost:8080/experience";
+  url = "http://localhost:8080/experience/";
   constructor(private http: HttpClient) { }
 
-  public list(): Observable<Experience[]> {
-    return this.http.get<Experience[]>(this.url + `/show`);
+  public createExperience(exprience:Experience): Observable<Experience> {
+    return this.http.post<Experience>(`${this.url}add`,exprience);
   }
-  public showExperience(id: number): Observable<Experience> {
-    return this.http.get<Experience>(this.url + `/show/${id}`);
+  public getExperiences(): Observable<Experience[]> {
+    return this.http.get<Experience[]>(`${this.url}show`);
   }
-  public newExperience(exprience:Experience): Observable<Experience> {
-    return this.http.post<Experience>(this.url + `/new`,exprience);
+  public getExperience(id: number): Observable<Experience> {
+    return this.http.get<Experience>(`${this.url}show/${id}`);
   }
-  public updateExperience(exprience:Experience): Observable<Experience> {
-    return this.http.put<Experience>(this.url + `/update`,exprience);
+  
+  public updateExperience(id?:number, exprience?:Experience): Observable<Experience> {
+    return this.http.put<Experience>(`${this.url}update/${id}`,exprience);
   }
   public deleteExperience(id: number): Observable<Experience> {
-    return this.http.delete<Experience>(this.url + `/delete/${id}`);
+    return this.http.delete<Experience>(`${this.url}delete/${id}`);
   }
 }
