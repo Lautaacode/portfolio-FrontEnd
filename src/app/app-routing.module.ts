@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'media/update/:id', component: IndexComponent},
   { path: 'socialmedia/add', component: IndexComponent},
   { path: 'socialmedia/update/:id', component: IndexComponent},
-  { path: 'user/update/aboutme/:id', component: IndexComponent},
+  { path: 'person/update/aboutme/:id', component: IndexComponent},
   { path: 'experience/add', component: IndexComponent},
   { path: 'experience/update/:id', component: IndexComponent},
   { path: 'education/add', component: IndexComponent},

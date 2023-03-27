@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/model/user';
-import { UserService } from 'src/app/services/user.service';
+import { Person } from 'src/app/model/person';
+import { PersonService } from 'src/app/services/person.service';
 
 @Component({
   selector: 'app-aboutme-modal',
@@ -10,15 +10,15 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./aboutme-modal.component.css']
 })
 export class AboutmeModalComponent {
-  user?: User;
+  person?: Person;
   data: any;
 
-  constructor(private sUser: UserService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private sPerson: PersonService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     let id = this.route.snapshot.params['id'];
-    this.sUser.getUser(id).subscribe(data => {
-      this.user = data
+    this.sPerson.getPerson(id).subscribe(data => {
+      this.person = data
     })
   }
 
@@ -29,10 +29,10 @@ export class AboutmeModalComponent {
     lastname: new FormControl('', [Validators.required]),
     title: new FormControl('', [Validators.required]),
     aboutMe: new FormControl('', [Validators.required]),
-    jobImg: new FormControl('', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
-    jobLink: new FormControl('', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
-    studyImg: new FormControl('', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
-    studyLink: new FormControl('', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')])
+    jobImg: new FormControl('',[Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
+    jobLink: new FormControl('',[Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
+    studyImg: new FormControl('',[Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
+    studyLink: new FormControl('',[Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')])
   })
 
   get BannerImg() {
@@ -71,7 +71,7 @@ export class AboutmeModalComponent {
   updateAboutme(): void {
     this.data = this.aboutmeForm.value
 
-    this.sUser.updateUser(this.user?.id, this.data).subscribe(data => {
+    this.sPerson.updatePerson(this.person?.id, this.data).subscribe(data => {
 
     })
 

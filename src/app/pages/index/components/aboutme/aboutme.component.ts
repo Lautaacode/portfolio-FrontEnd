@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/model/user';
-import { UserService } from 'src/app/services/user.service';
+import { Person } from 'src/app/model/person';
+import { PersonService } from 'src/app/services/person.service';
 
 
 @Component({
@@ -11,24 +11,20 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AboutmeComponent implements OnInit {
   
-  users: User[] | undefined;
+  persons: Person[] | undefined;
   
-  constructor(private sUser: UserService, private router:Router) { }
+  constructor(private sPerson: PersonService, private router:Router) { }
 
-  showUser(): void {
-    this.sUser.getUsers().subscribe(dato => { this.users = dato });
-  }
   ngOnInit(): void {
     this.getUsers();
   }
 
   getUsers(): void {
-    this.sUser.getUsers().subscribe(dato => { this.users = dato });
+    this.sPerson.getPersons().subscribe(dato => { this.persons = dato });
   }
 
-
   updateAboutme(id: number) {
-    this.router.navigate(['user/update/aboutme', id]);
+    this.router.navigate(['person/update/aboutme', id]);
   }
 }
 

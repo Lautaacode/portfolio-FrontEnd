@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/model/user';
-import { UserService } from 'src/app/services/user.service';
+import { Person } from 'src/app/model/person';
+import { PersonService } from 'src/app/services/person.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,15 +10,15 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfileComponent {
 
-  users: User[]| undefined;
+  persons: Person[]| undefined;
 
-  constructor(private sUser: UserService, private router:Router) { }
+  constructor(private sPerson: PersonService, private router:Router) { }
 
   ngOnInit() {
-    this.showUser()
+    this.getPersons()
 
   }
-  showUser() {
-    this.sUser.getUsers().subscribe(dato => { this.users = dato });
+  getPersons() {
+    this.sPerson.getPersons().subscribe(dato => { this.persons = dato });
   }  
 }

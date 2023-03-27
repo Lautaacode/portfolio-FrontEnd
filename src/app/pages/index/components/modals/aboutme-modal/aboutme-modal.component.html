@@ -65,9 +65,6 @@
                     <label for="imageEduationInput" class="form-label">imagen actual de estudios:</label>
                     <input type="url" class="form-control" id="imageEducationInput" formControlName="studyImg">
                     <div *ngIf="StudyImg?.errors  && StudyImg?.touched">
-                        <p *ngIf="StudyImg?.hasError('required')" class="error">
-                            La url es requerida.
-                        </p>
                         <p *ngIf="StudyImg?.hasError('pattern')" class="error">
                             El formato de la url debe ser valida.
                         </p>
@@ -76,9 +73,6 @@
                     <label for="linkEducationInput" class="form-label">Link de Estudios:</label>
                     <input type="url" class="form-control" id="linkEducationInput" formControlName="studyLink">
                     <div *ngIf="StudyLink?.errors  && StudyLink?.touched">
-                        <p *ngIf="StudyLink?.hasError('required')" class="error">
-                            La url es requerida.
-                        </p>
                         <p *ngIf="StudyLink?.hasError('pattern')" class="error">
                             El formato de la url debe ser valida.
                         </p>
@@ -87,9 +81,6 @@
                     <label for="imageExperienceInput" class="form-label">imagen actual de trabajo:</label>
                     <input type="url" class="form-control" id="imageExperienceInput" formControlName="jobImg">
                     <div *ngIf="JobImg?.errors  && JobImg?.touched">
-                        <p *ngIf="JobImg?.hasError('required')" class="error">
-                            La url es requerida.
-                        </p>
                         <p *ngIf="JobImg?.hasError('pattern')" class="error">
                             El formato de la url debe ser valida.
                         </p>
@@ -98,9 +89,6 @@
                     <label for="linkExperienceInput" class="form-label">Link de trabajo:</label>
                     <input type="url" class="form-control" id="linkExperienceInput" formControlName="jobLink">
                     <div *ngIf="JobLink?.errors  && JobLink?.touched">
-                        <p *ngIf="JobLink?.hasError('required')" class="error">
-                            La url es requerida.
-                        </p>
                         <p *ngIf="JobLink?.hasError('pattern')" class="error">
                             El formato de la url debe ser valida.
                         </p>
