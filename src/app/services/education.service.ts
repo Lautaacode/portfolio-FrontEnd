@@ -8,22 +8,23 @@ import { Education } from '../model/education';
 })
 export class EducationService {
 
-  url = "http://localhost:8080/education";
+  url = "http://localhost:8080/education/";
   constructor(private http: HttpClient) { }
 
-  public list(): Observable<Education[]> {
-    return this.http.get<Education[]>(this.url + `/show`);
+  public createEducation(education:Education): Observable<Education> {
+    return this.http.post<Education>(`${this.url}add`,education);
   }
-  public showEducation(id: number): Observable<Education> {
-    return this.http.get<Education>(this.url + `/show/${id}`);
+  public getEducations(): Observable<Education[]> {
+    return this.http.get<Education[]>(`${this.url}show`);
   }
-  public newEducation(education:Education): Observable<Education> {
-    return this.http.post<Education>(this.url + `/new`,education);
+  public getEducation(id: number): Observable<Education> {
+    return this.http.get<Education>(`${this.url}show/${id}`);
   }
-  public updateEducation(education:Education): Observable<Education> {
-    return this.http.put<Education>(this.url + `/update`,education);
+  
+  public updateEducation(id?:number, education?:Education): Observable<Education> {
+    return this.http.put<Education>(`${this.url}update/${id}`,education);
   }
   public deleteEducation(id: number): Observable<Education> {
-    return this.http.delete<Education>(this.url + `/delete/${id}`);
+    return this.http.delete<Education>(`${this.url}delete/${id}`);
   }
 }

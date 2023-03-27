@@ -1,0 +1,69 @@
+<div class="modal fade" id="educationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form [formGroup]="educationAddForm" (ngSubmit)="onSubmit($event)">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Agregar Educacion:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="index()" (click)="clear()"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="tittleStudyInput" class="form-label">titulo de estudio:</label>
+                    <input type="text" class="form-control" id="tittleStudyInput" formControlName="titleEdu">
+                    <div *ngIf="TitleEdu?.errors  && TitleEdu?.touched">
+                        <p *ngIf="TitleEdu?.hasError('required')" class="error">
+                            El titulo es requerido.
+                        </p>
+                    </div>
+
+                    <label for="imageStudyInput" class="form-label">imagen actual de estudio:</label>
+                    <input type="url" class="form-control" id="imageStudyInput" formControlName="imgEdu">
+                    <div *ngIf="ImgEdu?.errors  && ImgEdu?.touched">
+                        <p *ngIf="ImgEdu?.hasError('required')" class="error">
+                            La url es requerida.
+                        </p>
+                        <p *ngIf="ImgEdu?.hasError('pattern')" class="error">
+                            El formato de la url debe ser valida.
+                        </p>
+                    </div>
+
+                    <label for="dateInitInput" class="form-label">Fecha de inicio:</label>
+                    <input type="date" class="form-control" id="dateInitInput" formControlName="dateInitEdu">
+                    <div *ngIf="DateInitEdu?.errors  && DateInitEdu?.touched">
+                        <p *ngIf="DateInitEdu?.hasError('required')" class="error">
+                            La fecha es requerida.
+                        </p>
+                    </div>
+
+                    <label for="dateEndInput" class="form-label">Fecha de finalizacion:</label>
+                    <input type="date" class="form-control" id="dateEndInput" formControlName="dateEndEdu">
+                    <div *ngIf="DateEndEdu?.errors  && DateEndEdu?.touched">
+                        <p *ngIf="DateEndEdu?.hasError('required')" class="error">
+                            La fecha es requerida.
+                        </p>
+                    </div>
+
+                    <label for="nameJobInput" class="form-label">Institucion:</label>
+                    <input type="text" class="form-control" id="nameJobInput" formControlName="institutionEdu">
+                    <div *ngIf="InstitutionEdu?.errors  && InstitutionEdu?.touched">
+                        <p *ngIf="InstitutionEdu?.hasError('required')" class="error">
+                            La Institucion es requerida.
+                        </p>
+                    </div>
+
+                    <label for="descriptionInput" class="form-label">descripcion:</label>
+                    <textarea name="" class="form-control" id="descriptionInput" formControlName="descriptionEdu"></textarea>
+                    <div *ngIf="DescriptionEdu?.errors  && DescriptionEdu?.touched">
+                        <p *ngIf="DescriptionEdu?.hasError('required')" class="error">
+                            La descripcion es requerida.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="index()" (click)="clear()">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

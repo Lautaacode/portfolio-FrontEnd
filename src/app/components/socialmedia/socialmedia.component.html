@@ -1,17 +1,14 @@
-<ul class="navbar-nav">
-    <li class="nav-item">
-        <a class="nav-link" href="https://github.com/Lautaacode/portfolio-FrontEnd" target="_blank">
-            <i class="fa-brands fa-github social"></i>Github
+<ul class="navbar-nav" *ngFor="let social of socials">
+    <li class="nav-item" style="display: flex;">
+        
+        <a class="nav-link" href="{{social.socialLink}}" target="_blank">
+            <i class="fa-brands fa-{{social.socialIco}} social"></i>{{social.socialIco}}
         </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="https://www.linkedin.com/in/lautaro-blanco-44621215a/" target="_blank">
-            <i class="fa-brands fa-linkedin social"></i>LinkdIn
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="https://www.instagram.com/lautaa_asinoma/" target="_blank">
-            <i class="fa-brands fa-instagram social"></i>Instagram
-        </a>
+        <button type="button" class="btn btn-edition-w" data-bs-toggle="modal" data-bs-target="#addSocialMediaModal" (click)="updateSocialMedia(social.id)">
+            <i class="fa-solid fa-pencil"></i>
+        </button>
+        <button type="button" class="btn btn-edition-w" (click)="deleteSocialMedia(social.id)">
+            <i class="fa-solid fa-trash-can text-center "></i>
+        </button>
     </li>
 </ul>

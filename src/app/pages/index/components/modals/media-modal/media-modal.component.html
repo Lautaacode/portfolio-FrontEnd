@@ -1,0 +1,41 @@
+<div class="modal fade" id="addMediaModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form [formGroup]="mediaForm" (ngSubmit)="onSubmit($event)">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Editar media:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="index()" (click)="clear()"></button>
+                </div>
+                <div class="modal-body">
+
+                    <label for="logoInput" class="form-label">link de logo:</label>
+                    <input type="url" class="form-control" id="logoInput" formControlName="logo" >
+                    <div *ngIf="Logo?.errors  && Logo?.touched">
+                        <p *ngIf="Logo?.hasError('required')" class="error">
+                            La url es requerida.
+                        </p>
+                        <p *ngIf="Logo?.hasError('pattern')" class="error">
+                            El formato de la url debe ser valida.
+                        </p>
+                    </div>
+                    
+                    <label for="backgroundInput" class="form-label">link de background:</label>
+                    <input type="url" class="form-control" id="backgroundInput" formControlName="background" >
+                    <div *ngIf="Background?.errors  && Background?.touched">
+                        <p *ngIf="Background?.hasError('required')" class="error">
+                            La url es requerida.
+                        </p>
+                        <p *ngIf="Background?.hasError('pattern')" class="error">
+                            El formato de la url debe ser valida.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="index()" (click)="clear()">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

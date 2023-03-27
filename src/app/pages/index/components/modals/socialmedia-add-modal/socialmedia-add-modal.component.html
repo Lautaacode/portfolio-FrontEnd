@@ -1,0 +1,38 @@
+<div class="modal fade" id="socialMediaModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form [formGroup]="socialAddForm" (ngSubmit)="onSubmit($event)">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Agregar redes:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="index()" (click)="clear()"></button>
+                </div>
+                <div class="modal-body">
+
+                    <label for="socialLinkInput" class="form-label">icono:</label>
+                    <input type="text" class="form-control" id="socialLinkInput" formControlName="socialIco">
+                    <div *ngIf="SocialIco?.errors  && SocialIco?.touched">
+                        <p *ngIf="SocialIco?.hasError('required')" class="error">
+                            El icono es requerido.
+                        </p>
+                    </div>
+
+                    <label for="socialLinkInput" class="form-label">link de red:</label>
+                    <input type="url" class="form-control" id="socialLinkInput" formControlName="socialLink" >
+                    <div *ngIf="SocialLink?.errors  && SocialLink?.touched">
+                        <p *ngIf="SocialLink?.hasError('required')" class="error">
+                            La url es requerida.
+                        </p>
+                        <p *ngIf="SocialLink?.hasError('pattern')" class="error">
+                            El formato de la url debe ser valida.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="index()" (click)="clear()">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

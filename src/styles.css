@@ -4,17 +4,6 @@
     box-sizing: border-box;
 }
 
-body {
-    background-image: linear-gradient(
-        90deg,
-            rgba(0, 0, 0, 0.932),
-            rgba(255, 255, 255, 0.394),
-            rgb(0, 0, 0, 0.932)),
-        url(./assets/images/wallp3.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-}
 .main-background {
     display: flex;
     flex-direction: column;
@@ -45,11 +34,23 @@ img{
     margin: 0;
     padding: 0 7px;
     border:none;
+}
+.btn-edition-w{
+    color:#ffffffcc;
+    font-size: 20px;
+    margin: 0;
+    padding: 0 7px;
+    border:none;
     
 }
 .btn-edition:hover{
     text-shadow: 0px 0px 4px #000;
     color: #ffffffcc;
+    transition:.2s;
+}
+.btn-edition-w:hover{
+    text-shadow: 0px 0px 4px #fff;
+    color: #001;
     transition:.2s;
 }
 .btn-edit{

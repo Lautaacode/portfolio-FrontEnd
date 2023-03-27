@@ -7,7 +7,9 @@ export interface User {
     profileImg: string;
     bannerImg: string;
     jobImg: string;
+    jobLink: string;
     studyImg: string;
+    studyLink: string;
 }
 
 

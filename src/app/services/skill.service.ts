@@ -8,22 +8,23 @@ import { Skill } from '../model/skill';
 })
 export class SkillService {
 
-  url = "http://localhost:8080/skill";
+  url = "http://localhost:8080/skill/";
   constructor(private http: HttpClient) { }
 
-  public list(): Observable<Skill[]> {
-    return this.http.get<Skill[]>(this.url + `/show`);
+  public createSkill(skill:Skill): Observable<Skill> {
+    return this.http.post<Skill>(`${this.url}add`,skill);
   }
-  public showSkill(id: number): Observable<Skill> {
-    return this.http.get<Skill>(this.url + `/show/${id}`);
+  public getSkills(): Observable<Skill[]> {
+    return this.http.get<Skill[]>(`${this.url}show`);
   }
-  public newSkill(skill: Skill): Observable<Skill> {
-    return this.http.post<Skill>(this.url + `/new`, skill);
+  public getSkill(id: number): Observable<Skill> {
+    return this.http.get<Skill>(`${this.url}show/${id}`);
   }
-  public updateSkill(skill: Skill): Observable<Skill> {
-    return this.http.put<Skill>(this.url + `/update`, skill);
+  
+  public updateSkill(id?:number, skill?:Skill): Observable<Skill> {
+    return this.http.put<Skill>(`${this.url}update/${id}`,skill);
   }
   public deleteSkill(id: number): Observable<Skill> {
-    return this.http.delete<Skill>(this.url + `/delete/${id}`);
+    return this.http.delete<Skill>(`${this.url}delete/${id}`);
   }
 }

@@ -10,8 +10,8 @@ export class ExperienceService {
   url = "http://localhost:8080/experience/";
   constructor(private http: HttpClient) { }
 
-  public createExperience(exprience:Experience): Observable<Experience> {
-    return this.http.post<Experience>(`${this.url}add`,exprience);
+  public createExperience(experience:Experience): Observable<Experience> {
+    return this.http.post<Experience>(`${this.url}add`,experience);
   }
   public getExperiences(): Observable<Experience[]> {
     return this.http.get<Experience[]>(`${this.url}show`);
@@ -20,8 +20,8 @@ export class ExperienceService {
     return this.http.get<Experience>(`${this.url}show/${id}`);
   }
   
-  public updateExperience(id?:number, exprience?:Experience): Observable<Experience> {
-    return this.http.put<Experience>(`${this.url}update/${id}`,exprience);
+  public updateExperience(id?:number, experience?:Experience): Observable<Experience> {
+    return this.http.put<Experience>(`${this.url}update/${id}`,experience);
   }
   public deleteExperience(id: number): Observable<Experience> {
     return this.http.delete<Experience>(`${this.url}delete/${id}`);

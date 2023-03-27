@@ -1,11 +1,19 @@
-<nav class="navbar navbar-dark navbar-expand-md bg-dark sticky-top">
-    <app-logo></app-logo>
+<nav *ngFor="let media of medias" class="navbar navbar-dark navbar-expand-md bg-dark sticky-top">
+    <a routerLink="/">
+        <img src="{{media.logo}}" id="logo" alt="">
+    </a>
+    <button type="button" class="btn btn-edition-w" data-bs-toggle="modal" data-bs-target="#addMediaModal" (click)="updateMedia(media.id)" >
+        <i class="fa-solid fa-pencil  text-center "></i>
+    </button> 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <app-socialmedia></app-socialmedia>
+        <button type="button" class="btn btn-edition-w" data-bs-toggle="modal" data-bs-target="#socialMediaModal" (click)="createSocialMedia()">
+            <i class="fa-solid fa-plus text-center "></i>
+        </button>
+        <app-socialmedia class="social-media"></app-socialmedia>
         <app-btn-login></app-btn-login>
         <app-btn-logout></app-btn-logout>
     </div>

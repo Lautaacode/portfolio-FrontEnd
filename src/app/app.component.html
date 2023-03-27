@@ -1,3 +1,10 @@
-<app-nav></app-nav>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div class="background" *ngFor="let media of medias" style="background-image: linear-gradient(
+    90deg,
+        rgba(0, 0, 0, 0.932),
+        rgba(255, 255, 255, 0.394),
+        rgb(0, 0, 0, 0.932)),
+        url({{media.background}});">
+    <app-nav></app-nav>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+</div>

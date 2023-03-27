@@ -13,4 +13,11 @@
         display: flex;
         justify-content: right;
     }
+    .social-media{
+        display: flex;
+    }
+}
+#logo {
+    object-fit: contain;
+    max-height: 3rem;
 }

@@ -1,0 +1,34 @@
+<div *ngFor="let education of educations" class="activity-box">
+    <div class="activity">
+        <div class="activity-info">
+            <div class="d-flex text-center">
+                <h4>{{education.titleEdu}}</h4>
+            </div>
+            <div class="d-flex">
+                <img [src]="education.imgEdu" id="img-info" class="img-info" alt="" />
+            </div>
+            <div class="d-flex flex-column">
+                <h5>{{education.dateInitEdu}} -</h5>
+                <h5>{{education.dateEndEdu}}</h5>
+            </div>
+        </div>
+        <div>
+            <div class=" activity-main-text">
+                <h5>
+                    {{education.institutionEdu}}
+                </h5>
+                <p>
+                    {{education.descriptionEdu}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column ">
+        <button type="button" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#addStudyModal"(click)="updateEducation(education.id)">
+            <i class="fa-solid fa-pencil  text-center "></i>
+        </button>
+        <button type="button" class="btn btn-edition" (click)="deleteEducation(education.id)">
+            <i class="fa-solid fa-trash-can text-center "></i>
+        </button>
+    </div>
+</div>
