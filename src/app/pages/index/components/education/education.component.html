@@ -24,10 +24,10 @@
         </div>
     </div>
     <div class="d-flex flex-column ">
-        <button type="button" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#addStudyModal"(click)="updateEducation(education.id)">
+        <button type="button" *ngIf="isLogged" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#addStudyModal"(click)="updateEducation(education.id)">
             <i class="fa-solid fa-pencil  text-center "></i>
         </button>
-        <button type="button" class="btn btn-edition" (click)="deleteEducation(education.id)">
+        <button type="button" *ngIf="isLogged" class="btn btn-edition" (click)="deleteEducation(education.id)">
             <i class="fa-solid fa-trash-can text-center "></i>
         </button>
     </div>

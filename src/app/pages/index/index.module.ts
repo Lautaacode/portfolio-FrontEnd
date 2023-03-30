@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IndexRoutingModule } from './index-routing.module';
-import { LoginModule } from '../login/login.module';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IndexComponent } from './index.component';
@@ -25,6 +25,10 @@ import { SkillAddModalComponent } from './components/modals/skill-add-modal/skil
 import { SocialmediaModalComponent } from './components/modals/socialmedia-modal/socialmedia-modal.component';
 import { SocialmediaAddModalComponent } from './components/modals/socialmedia-add-modal/socialmedia-add-modal.component';
 import { MediaModalComponent } from './components/modals/media-modal/media-modal.component';
+import { NavComponent } from './components/nav/nav.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SocialmediaComponent } from './components/socialmedia/socialmedia.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -48,12 +52,16 @@ import { MediaModalComponent } from './components/modals/media-modal/media-modal
     SkillAddModalComponent,
     SocialmediaModalComponent,
     SocialmediaAddModalComponent,
-    MediaModalComponent
+    MediaModalComponent,
+    NavComponent,
+    FooterComponent,
+    SocialmediaComponent,
+    LoginComponent,
+    
   ],
   imports: [
     CommonModule,
     IndexRoutingModule,
-    LoginModule,
     FormsModule,
     ReactiveFormsModule
   ]

@@ -9,7 +9,7 @@
                 <app-experience></app-experience>
             </div>
             <div class="d-flex flex-column">
-                <button type="button" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#experienceModal" (click)="createExperience()">
+                <button type="button" *ngIF="isLogged" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#experienceModal" (click)="createExperience()">
                     <i class="fa-solid fa-plus text-center "></i>
                 </button>
             </div>
@@ -23,7 +23,7 @@
                 <app-education></app-education>
             </div>
             <div class="d-flex flex-column">
-                <button type="button" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#educationModal" (click)="createEducation()">
+                <button type="button" *ngIF="isLogged" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#educationModal" (click)="createEducation()">
                     <i class="fa-solid fa-plus text-center "></i>
                 </button>
             </div>
@@ -37,7 +37,7 @@
                 <app-skill></app-skill>
             </div>
             <div class="d-flex flex-column">
-                <button type="button" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#skillModal" (click)="createSkill()">
+                <button type="button" *ngIF="isLogged" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#skillModal" (click)="createSkill()">
                     <i class="fa-solid fa-plus text-center "></i>
                 </button>
             </div>

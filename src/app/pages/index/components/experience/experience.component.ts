@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Experience } from 'src/app/model/experience';
 import { ExperienceService } from 'src/app/services/experience.service';
-import { ExperienceModalComponent } from '../modals/experience-modal/experience-modal.component';
+import { TokenService } from 'src/app/services/token.service';
+
 @Component({
   selector: 'app-experience',
   templateUrl: './experience.component.html',
@@ -10,15 +11,21 @@ import { ExperienceModalComponent } from '../modals/experience-modal/experience-
 })
 export class ExperienceComponent implements OnInit {
 
+  isLogged = false;
 
   experiences: Experience[] | undefined;
 
-  constructor(private sExperience: ExperienceService, private router: Router) {
+  constructor(private sExperience: ExperienceService, private router: Router, private tokenService: TokenService) {
 
   }
 
   ngOnInit(): void {
     this.getExperiences();
+    if (this.tokenService.getToken()){
+      this.isLogged= true;
+    }else{
+      this.isLogged= false;
+    }
   }
 
   getExperiences() {

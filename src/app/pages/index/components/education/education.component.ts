@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { EducationService } from 'src/app/services/education.service';
 import { Education } from 'src/app/model/education';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-education',
@@ -10,12 +11,19 @@ import { Router } from '@angular/router';
 })
 export class EducationComponent {
 
+  isLogged = false;
+
   educations: Education[] | undefined;
 
-  constructor(private sEducation:EducationService, private router: Router) { }
+  constructor(private sEducation:EducationService, private router: Router,private tokenService: TokenService) { }
 
   ngOnInit():void {
     this.getEducations();
+    if (this.tokenService.getToken()){
+      this.isLogged= true;
+    }else{
+      this.isLogged= false;
+    }
   }
   getEducations() {
     this.sEducation.getEducations().subscribe(dato => {

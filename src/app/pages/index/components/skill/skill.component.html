@@ -17,11 +17,11 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column align-self-start">
-                        <button type="button" class="btn btn-edition" data-bs-toggle="modal"
+                        <button type="button" *ngIf="isLogged" class="btn btn-edition" data-bs-toggle="modal"
                             data-bs-target="#addSkillModal" (click)="updateSkill(skill.id)">
                             <i class="fa-solid fa-pencil"></i>
                         </button>
-                        <button type="button" class="btn btn-edition" data-bs-toggle="modal"
+                        <button type="button" *ngIf="isLogged" class="btn btn-edition" data-bs-toggle="modal"
                             data-bs-target="#deleteSkillModal" (click)="deleteSkill(skill.id)">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>

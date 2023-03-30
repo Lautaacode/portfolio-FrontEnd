@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './pages/index/components/login/login.component';
 import { IndexComponent } from './pages/index/index.component';
 
 const routes: Routes = [
   { path: 'index', loadChildren: () => import('./pages/index/index.module').then(m => m.IndexModule) },
-  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
+  { path: 'login', component: LoginComponent },
   { path: 'media/update/:id', component: IndexComponent},
   { path: 'socialmedia/add', component: IndexComponent},
   { path: 'socialmedia/update/:id', component: IndexComponent},

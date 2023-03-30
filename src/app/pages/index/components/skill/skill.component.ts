@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Skill } from 'src/app/model/skill';
 import { SkillService } from 'src/app/services/skill.service';
+import { TokenService } from 'src/app/services/token.service';
 
 
 @Component({
@@ -11,13 +12,19 @@ import { SkillService } from 'src/app/services/skill.service';
 })
 export class SkillComponent {
 
+  isLogged = false;
+
   skills: Skill[] | undefined ;
 
-  constructor(private sSkill: SkillService, private router: Router) { }
+  constructor(private sSkill: SkillService, private router: Router, private tokenService:TokenService) { }
 
   ngOnInit(): void {
     this.getSkills()
-
+    if (this.tokenService.getToken()){
+      this.isLogged= true;
+    }else{
+      this.isLogged= false;
+    }
   }
   getSkills() {
     this.sSkill.getSkills().subscribe(dato => {

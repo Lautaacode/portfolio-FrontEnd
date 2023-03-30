@@ -1,6 +1,6 @@
 <div class="about-section" *ngFor="let info of persons">
     <div class="btn-edit">
-        <button type="button" class="btn btn-edition " data-bs-toggle="modal" data-bs-target="#aboutmeModal" (click)="updateAboutme(info.id)">
+        <button type="button" *ngIf="isLogged" class="btn btn-edition " data-bs-toggle="modal" data-bs-target="#aboutmeModal" (click)="updateAboutme(info.id)">
             <i class="fa-solid fa-pencil"></i>
         </button>
     </div>

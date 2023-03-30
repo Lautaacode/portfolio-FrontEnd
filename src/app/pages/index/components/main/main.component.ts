@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-main',
@@ -8,7 +9,17 @@ import { Router } from '@angular/router';
 })
 export class MainComponent {
 
-  constructor(private router: Router) { }
+  isLogged = false;
+
+  constructor(private router: Router,private tokenService: TokenService) { }
+
+  ngOnInit() {
+    if (this.tokenService.getToken()){
+      this.isLogged= true;
+    }else{
+      this.isLogged= false;
+    }
+  }
 
   createExperience() {
     this.router.navigate(['experience/add']);

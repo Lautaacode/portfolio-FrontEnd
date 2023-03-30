@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Socialmedia } from 'src/app/model/socialmedia';
 import { SocialmediaService } from 'src/app/services/socialmedia.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-socialmedia',
@@ -10,11 +11,18 @@ import { SocialmediaService } from 'src/app/services/socialmedia.service';
 })
 export class SocialmediaComponent {
 
-  socials: Socialmedia [] | undefined;
-  constructor(private sSocial:SocialmediaService, private router: Router) { }
+  isLogged= false;
 
+  socials: Socialmedia [] | undefined;
+  constructor(private sSocial:SocialmediaService, private router: Router, private tokenService: TokenService) { }
+  
   ngOnInit():void {
     this.getSocialMedia();
+    if (this.tokenService.getToken()){
+      this.isLogged= true;
+    }else{
+      this.isLogged= false;
+    }
   }
   getSocialMedia() {
     this.sSocial.getSocialmedias().subscribe(dato => {

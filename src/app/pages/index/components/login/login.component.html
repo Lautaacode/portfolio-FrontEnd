@@ -1,0 +1,22 @@
+<app-nav></app-nav>
+<div class="main-background">
+    <div class="login">
+        <div class="login-container">
+            <img src="./assets/images/foto_de_perfil.jpg" id="img-profile" class="img-login" alt="">
+
+            <form #f="ngForm" (ngSubmit)="onLogin()" novalidate class="form-container">
+
+                <label for="userName"></label>
+                <input type="text" class="form-box" id="userName" name="userName" placeholder="User"
+                    [(ngModel)]="userName" required>
+
+                <label for="password"></label>
+                <input type="password" class="form-box" id="password" name="password" placeholder="Password"
+                    [(ngModel)]="password" required>
+
+                <button type="submit" class="btn btn-dark form-button">login</button>
+            </form>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
