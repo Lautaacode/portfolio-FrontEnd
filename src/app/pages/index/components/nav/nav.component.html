@@ -17,7 +17,7 @@
         </button>
 
         <app-socialmedia class="social-media"></app-socialmedia>
-        <button (click)="login()" *ngIf="!isLogged" class="btn btn-outline-success ">
+        <button (click)="login()" *ngIf="!isLogged && index" class="btn btn-outline-success ">
             <i class="fa-solid fa-user btn-login"></i>Log in
         </button>
 

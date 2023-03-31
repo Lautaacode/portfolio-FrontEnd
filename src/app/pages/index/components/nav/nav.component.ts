@@ -11,7 +11,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class NavComponent {
 
-  index = false;
+  index = true;
   isLogged = false;
 
   medias: Media[] | undefined;
@@ -26,6 +26,12 @@ export class NavComponent {
 
     } else {
       this.isLogged = false;
+    }
+    
+    if(window.location.href == "https://portfolio-blanco.web.app/login"){
+      this.index= false;
+    } else{
+        this.index= true;
     }
   }
 
