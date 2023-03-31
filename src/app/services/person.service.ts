@@ -7,7 +7,7 @@ import { Person } from '../model/person';
   providedIn: 'root'
 })
 export class PersonService {
-  url = "http://localhost:8080/person/";
+  url = "https://portfolio-backend-k4jy.onrender.com/person/";
   constructor(private http: HttpClient) { }
 
   public createUser(person:Person): Observable<Person> {

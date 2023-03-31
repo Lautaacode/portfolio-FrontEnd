@@ -11,30 +11,29 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class NavComponent {
 
-  
+  index = false;
   isLogged = false;
 
   medias: Media[] | undefined;
 
-  constructor(private sMedia:MediaService ,private router:Router,private tokenService: TokenService){}
+  constructor(private sMedia: MediaService, private router: Router, private tokenService: TokenService) { }
 
 
   ngOnInit(): void {
     this.getMedias();
-    if(this.tokenService.getToken()){
-      this.isLogged=true;
-      
-    }else{
-      this.isLogged=false;
-    }
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
 
+    } else {
+      this.isLogged = false;
+    }
   }
 
   onLogout(): void {
     this.tokenService.logOut();
     window.location.reload();
   }
-  
+
   getMedias() {
     this.sMedia.getMedias().subscribe(dato => {
       this.medias = dato
@@ -44,15 +43,15 @@ export class NavComponent {
   createSocialMedia() {
     this.router.navigate(['socialmedia/add']);
   }
-  updateMedia(id:number) {
-    this.router.navigate(['media/update',id]);
+  updateMedia(id: number) {
+    this.router.navigate(['media/update', id]);
   }
-  
+
   updateExperience(id: number) {
     this.router.navigate(['experience/update', id]);
   }
-  login(){
+  login() {
     this.router.navigate(['login']);
-    
+
   }
 }

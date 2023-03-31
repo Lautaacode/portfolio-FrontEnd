@@ -7,7 +7,7 @@ import { Media } from '../model/media';
   providedIn: 'root'
 })
 export class MediaService {
-  url = "http://localhost:8080/media/";
+  url = "https://portfolio-backend-k4jy.onrender.com/media/";
   constructor(private http: HttpClient) { }
 
   public createMedia(media:Media): Observable<Media> {

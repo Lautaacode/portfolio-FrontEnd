@@ -8,7 +8,7 @@ import { Education } from '../model/education';
 })
 export class EducationService {
 
-  url = "http://localhost:8080/education/";
+  url = "https://portfolio-backend-k4jy.onrender.com/education/";
   constructor(private http: HttpClient) { }
 
   public createEducation(education:Education): Observable<Education> {

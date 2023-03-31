@@ -8,7 +8,7 @@ import { Socialmedia } from '../model/socialmedia';
 })
 export class SocialmediaService {
 
-  url = "http://localhost:8080/socialmedia/";
+  url = "https://portfolio-backend-k4jy.onrender.com/socialmedia/";
   constructor(private http: HttpClient) { }
 
   public createSocialmedia(socialmedia:Socialmedia): Observable<Socialmedia> {
