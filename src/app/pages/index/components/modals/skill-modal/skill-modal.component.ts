@@ -53,7 +53,7 @@ export class SkillModalComponent {
     if (this.skillForm.valid) {
       this.updateSkill();
       window.location.reload();
-      alert("Experiencia modificada.");
+      alert("Skills modificada.");
     } else {
       this.skillForm.markAllAsTouched();
     }

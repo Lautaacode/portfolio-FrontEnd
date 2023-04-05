@@ -70,7 +70,7 @@ export class EducationModalComponent {
     if (this.educationForm.valid) {
       this.updateEducation();
       window.location.reload();
-      alert("Experiencia modificada.");
+      alert("Educacion modificada.");
     } else {
       this.educationForm.markAllAsTouched();
     }

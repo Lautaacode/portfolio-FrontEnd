@@ -10,7 +10,7 @@ export class PersonService {
   url = "https://portfolio-backend-k4jy.onrender.com/person/";
   constructor(private http: HttpClient) { }
 
-  public createUser(person:Person): Observable<Person> {
+  public createPerson(person:Person): Observable<Person> {
     return this.http.post<Person>(`${this.url}add`,person);
   }
   public getPersons(): Observable<Person[]> {
@@ -19,7 +19,6 @@ export class PersonService {
   public getPerson(id: number): Observable<Person> {
     return this.http.get<Person>(`${this.url}show/${id}`);
   }
-  
   public updatePerson(id?:number, person?:Person): Observable<Person> {
     return this.http.put<Person>(`${this.url}update/${id}`,person);
   }

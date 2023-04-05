@@ -53,7 +53,7 @@ export class MediaModalComponent {
     if (this.mediaForm.valid) {
       this.updateMedia();
       window.location.reload();
-      alert("Experiencia modificada.");
+      alert("Media modificada.");
     } else {
       this.mediaForm.markAllAsTouched();
     }

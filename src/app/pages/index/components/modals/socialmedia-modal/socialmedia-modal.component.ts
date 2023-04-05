@@ -53,7 +53,7 @@ export class SocialmediaModalComponent {
     if (this.socialForm.valid) {
       this.updateSocialMedia();
       window.location.reload();
-      alert("Experiencia modificada.");
+      alert("Social modificada.");
     } else {
       this.socialForm.markAllAsTouched();
     }
