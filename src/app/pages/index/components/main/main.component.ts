@@ -30,5 +30,8 @@ export class MainComponent {
   createSkill() {
     this.router.navigate(['skill/add']);
   }
+  createProject() {
+    this.router.navigate(['project/add']);
+  }
 }
 

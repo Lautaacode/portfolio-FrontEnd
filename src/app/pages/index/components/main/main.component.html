@@ -42,5 +42,19 @@
                 </button>
             </div>
         </div>
+        <!--Proyectos-->
+        <div class="row-1">
+            <div class="activity-main">
+                <div>
+                    <h2>Proyectos:</h2>
+                </div>
+                <app-projects></app-projects>
+            </div>
+            <div class="d-flex flex-column">
+                <button type="button" *ngIf="isLogged" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#projectModal" (click)="createProject()">
+                    <i class="fa-solid fa-plus text-center "></i>
+                </button>
+            </div>
+        </div>
     </div>
 </main>

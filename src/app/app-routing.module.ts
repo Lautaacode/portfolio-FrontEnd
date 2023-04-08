@@ -16,6 +16,8 @@ const routes: Routes = [
   { path: 'education/update/:id', component: IndexComponent},
   { path: 'skill/add', component: IndexComponent},
   { path: 'skill/update/:id', component: IndexComponent},
+  { path: 'project/add', component: IndexComponent},
+  { path: 'project/update/:id', component: IndexComponent},
   { path: '**', redirectTo: 'index', pathMatch: 'full'}
 ];
 

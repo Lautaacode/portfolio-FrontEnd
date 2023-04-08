@@ -1,1 +1,19 @@
-<p>projects works!</p>
+<div class="activity-box" *ngFor="let project of projects">
+    <div class=" project-container">
+        <div>
+            <img [src]="project.projectImg" class="project-img">
+        </div>
+        <div class="project-description">
+            <h4>{{project.name}}</h4>
+            <a class="btn btn-primary" href="{{project.projectLink}}">Link</a>
+        </div>
+    </div>
+    <div class="d-flex flex-column ">
+        <button type="button" *ngIf="isLogged" class="btn btn-edition" data-bs-toggle="modal" data-bs-target="#addProjectModal" (click)="updateProject(project.id)">
+            <i class="fa-solid fa-pencil  text-center "></i>
+        </button>
+        <button type="button" *ngIf="isLogged" class="btn btn-edition" (click)="deleteProject(project.id)">
+            <i class="fa-solid fa-trash-can text-center "></i>
+        </button>
+    </div>
+</div>

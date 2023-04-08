@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IndexRoutingModule } from './index-routing.module';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IndexComponent } from './index.component';
@@ -29,6 +28,8 @@ import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SocialmediaComponent } from './components/socialmedia/socialmedia.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProjectAddModalComponent } from './components/modals/project-add-modal/project-add-modal.component';
+import { ProjectModalComponent } from './components/modals/project-modal/project-modal.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,8 @@ import { LoginComponent } from './components/login/login.component';
     FooterComponent,
     SocialmediaComponent,
     LoginComponent,
+    ProjectAddModalComponent,
+    ProjectModalComponent,
     
   ],
   imports: [

@@ -1,0 +1,45 @@
+<div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form [formGroup]="projectAddForm" (ngSubmit)="onSubmit($event)">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Agregar habilidad:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="index()" (click)="clear()"></button>
+                </div>
+                <div class="modal-body">
+
+                    <label for="skillInput" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="skillInput" formControlName="name">
+                    <div *ngIf="Name?.errors  && Name?.touched">
+                        <p *ngIf="Name?.hasError('required')" class="error">
+                            El nombre es requerido.
+                        </p>
+                    </div>
+                    
+                    <label for="skillInput" class="form-label">Imagen de proyecto:</label>
+                    <input type="text" class="form-control" id="skillInput" formControlName="projectImg">
+                    <div *ngIf="ProjectImg?.errors  && ProjectImg?.touched">
+                        <p *ngIf="ProjectImg?.hasError('required')" class="error">
+                            La imagen  es requerida.
+                        </p>
+                    </div>
+                    
+                    <label for="skillInput" class="form-label">Link de proyecto:</label>
+                    <input type="text" class="form-control" id="skillInput" formControlName="projectLink">
+                    <div *ngIf="ProjectLink?.errors  && ProjectLink?.touched">
+                        <p *ngIf="ProjectLink?.hasError('required')" class="error">
+                            El link es requerido.
+                        </p>
+                    </div>
+
+                    
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="index()" (click)="clear()">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
